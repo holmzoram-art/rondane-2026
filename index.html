@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8" />
+<title>Rondane 2026 — Nedtelling</title>
+<meta property="og:title" content="Rondane 2026 — Nedtelling til Rondeslottet">
+<meta property="og:description" content="01.07.2026 · 7 mann sterk · Andreas, Kjetil, Geir, Sondre, HC, Knut & Ole Martin">
+<meta property="og:type" content="website">
+<meta property="og:image" content="preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Archivo+Black&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1d2733;
+    --paper:#f3efe4;
+    --sky-top:#a8d4ec;
+    --sky-mid:#cfe6f3;
+    --sky-bot:#eaf3f9;
+    --far:#a6b8c9;
+    --far2:#7e93a8;
+    --mid:#8ea2b6;
+    --mid2:#6c8198;
+    --peak:#9eb1c4;
+    --peak-shade:#6c8295;
+    --snow:#fafdff;
+    --tundra-1:#a8b97c;
+    --tundra-2:#8aa05c;
+    --tundra-3:#6c8444;
+    --water:#cfe2e7;
+    --path:#d9cdb8;
+    --path2:#bcae93;
+    --accent:#d54a3a;
+    --warm:#e88a3e;
+    --sun:#fff2bd;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#1d2733;font-family:"Bricolage Grotesque",system-ui,sans-serif;color:var(--ink);}
+  body{display:grid;place-items:center;padding:24px;}
+  .frame{
+    width:min(1400px, 100%);
+    aspect-ratio: 14 / 9;
+    background:var(--paper);
+    border-radius:18px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(0,0,0,.15);
+    overflow:hidden;
+    position:relative;
+    isolation:isolate;
+  }
+  svg{display:block;width:100%;height:100%;}
+  .grain{
+    position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.10;
+    background-image:radial-gradient(rgba(0,0,0,.6) 1px, transparent 1.4px);
+    background-size: 3px 3px;
+  }
+  .overlay{
+    position:absolute; inset:0; pointer-events:none;
+    display:grid; grid-template-rows:auto 1fr auto; padding:36px 46px 38px;
+  }
+  .top{display:flex; justify-content:space-between; align-items:flex-start;}
+  .badge{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--paper);
+    padding:8px 14px; border-radius:999px;
+    font-weight:800; letter-spacing:.18em; font-size:13px; text-transform:uppercase;
+  }
+  .badge .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 0 3px rgba(213,74,58,.25);}
+  .meta{
+    text-align:right; font-weight:600; font-size:14px; letter-spacing:.04em;
+    line-height:1.35; color:#39424f;
+  }
+  .meta b{display:block;font-family:"Archivo Black",sans-serif;font-size:19px;letter-spacing:.02em;color:var(--ink);}
+  .center{
+    align-self:center; justify-self:center; text-align:center;
+    transform: translateY(-4%);
+  }
+  .label{
+    font-weight:800; letter-spacing:.28em; font-size:14px; text-transform:uppercase;
+    color:#39424f;
+  }
+  .num{
+    font-family:"Archivo Black", sans-serif;
+    font-size: clamp(180px, 27vw, 400px);
+    line-height:.85;
+    color:var(--ink);
+    letter-spacing:-.04em;
+    text-shadow:
+      6px 6px 0 var(--accent),
+      12px 12px 0 var(--warm);
+    margin-top:6px;
+  }
+  .sub{
+    font-family:"Archivo Black", sans-serif;
+    font-size: clamp(28px, 3.4vw, 52px);
+    letter-spacing:.04em;
+    color:var(--ink);
+    margin-top:-6px;
+  }
+  .bottom{display:flex; justify-content:space-between; align-items:flex-end; gap:24px;}
+  .names{
+    background:rgba(29,39,51,.88); color:var(--paper);
+    backdrop-filter:blur(2px);
+    padding:10px 16px; border-radius:12px;
+    font-weight:600; font-size:13px; letter-spacing:.05em;
+    max-width: 64%;
+  }
+  .names b{font-family:"Archivo Black",sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--sun);display:block;margin-bottom:2px;}
+  .stamp{
+    font-family:"Caveat",cursive;
+    color:var(--ink);
+    border:2px solid var(--ink);
+    border-radius:6px;
+    padding:6px 14px 4px;
+    font-size:22px;
+    transform: rotate(-6deg);
+    box-shadow: 3px 3px 0 var(--accent);
+    background:rgba(243,239,228,.6);
+  }
+  @media (max-width: 760px){
+    .overlay{padding:20px 22px;}
+    .num{text-shadow: 4px 4px 0 var(--accent), 8px 8px 0 var(--warm);}
+  }
+</style>
+</head>
+<body>
+  <div class="frame" id="frame">
+    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a8d4ec"/>
+          <stop offset="55%" stop-color="#cfe6f3"/>
+          <stop offset="100%" stop-color="#eaf3f9"/>
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#cfe2e7"/>
+          <stop offset="100%" stop-color="#9ebcc6"/>
+        </linearGradient>
+        <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d9cdb8"/>
+          <stop offset="100%" stop-color="#b1a182"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+          <stop offset="0%" stop-color="#fff8d6"/>
+          <stop offset="60%" stop-color="#ffe98a" stop-opacity=".7"/>
+          <stop offset="100%" stop-color="#ffe98a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- SKY -->
+      <rect x="0" y="0" width="1400" height="640" fill="url(#sky)"/>
+      <!-- soft sun -->
+      <circle cx="1130" cy="200" r="180" fill="url(#sun)"/>
+      <circle cx="1130" cy="200" r="46" fill="#fff8d6"/>
+
+      <!-- distant wispy clouds (like the photo) -->
+      <g fill="#ffffff" opacity=".8">
+        <ellipse cx="240" cy="160" rx="180" ry="10"/>
+        <ellipse cx="200" cy="175" rx="120" ry="6"/>
+        <ellipse cx="700" cy="120" rx="220" ry="11"/>
+        <ellipse cx="660" cy="135" rx="140" ry="6"/>
+        <ellipse cx="1280" cy="240" rx="160" ry="9"/>
+        <ellipse cx="430" cy="260" rx="120" ry="6"/>
+      </g>
+
+      <!-- distant birds -->
+      <g fill="none" stroke="#1d2733" stroke-width="2.2" stroke-linecap="round" opacity=".7">
+        <path d="M380 220 q8 -8 16 0 q8 -8 16 0"/>
+        <path d="M900 200 q7 -7 14 0 q7 -7 14 0"/>
+      </g>
+
+      <!-- FAR / HAZY MOUNTAINS (light blue-grey) -->
+      <path d="M0 540 L 110 470 L 200 510 L 300 430 L 400 490 L 520 450 L 640 500 L 780 440 L 900 490 L 1020 430 L 1160 500 L 1300 460 L 1400 500 L 1400 640 L 0 640 Z" fill="#bccbdb"/>
+
+      <!-- LEFT PEAK (Rondeslottet-style) -->
+      <path d="M 60 640
+               L 180 480
+               L 250 510
+               L 330 410
+               L 420 350
+               L 500 300
+               L 560 380
+               L 610 420
+               L 670 470
+               L 720 520
+               L 760 580
+               L 800 640 Z" fill="#9eb1c4"/>
+      <!-- shading on left peak -->
+      <path d="M 500 300 L 560 380 L 610 420 L 670 470 L 720 520 L 760 580 L 800 640 L 500 640 Z" fill="#7991a6"/>
+      <!-- snow streaks on left peak (white verticals running down) -->
+      <g fill="#fafdff" opacity=".95">
+        <path d="M498 304 q -4 60 -18 120 q -2 40 4 80 l 6 0 q -4 -40 -2 -80 q 14 -60 22 -120 z"/>
+        <path d="M440 340 q -2 50 -12 100 q 0 30 6 60 l 4 0 q -2 -30 0 -60 q 10 -50 16 -100 z"/>
+        <path d="M540 360 q 2 40 -6 80 q -2 30 4 60 l 4 0 q -2 -30 2 -60 q 6 -40 8 -80 z"/>
+        <path d="M380 410 q 0 40 -8 70 l 6 4 q 4 -34 10 -74 z" opacity=".7"/>
+      </g>
+      <!-- shadow gully on the left dark face -->
+      <path d="M 250 510 L 290 540 L 270 580 L 230 600 L 220 580 Z" fill="#5e7892" opacity=".55"/>
+
+      <!-- VALLEY DIP -->
+
+      <!-- RIGHT PEAK (Rondeslottet itself, taller, more snow on top-right) -->
+      <path d="M 800 640
+               L 860 540
+               L 920 470
+               L 980 400
+               L 1050 340
+               L 1120 290
+               L 1180 360
+               L 1230 430
+               L 1280 500
+               L 1330 580
+               L 1370 640 Z" fill="#9fb3c6"/>
+      <!-- shading right peak -->
+      <path d="M 1120 290 L 1180 360 L 1230 430 L 1280 500 L 1330 580 L 1370 640 L 1120 640 Z" fill="#7c95aa"/>
+      <!-- snow on summit (top) -->
+      <path d="M 1120 290 L 1140 310 L 1130 325 L 1150 335 L 1140 350 L 1170 355 L 1160 380 L 1100 360 L 1080 340 L 1100 320 Z" fill="#fafdff"/>
+      <!-- snow streaks running down right face -->
+      <g fill="#fafdff" opacity=".95">
+        <path d="M 1110 330 q 2 60 -4 120 q 2 40 12 80 l 4 -2 q -6 -40 -4 -80 q 6 -60 0 -120 z"/>
+        <path d="M 1060 360 q 0 50 -10 100 q 0 30 4 60 l 4 0 q -4 -30 -2 -60 q 8 -50 12 -100 z"/>
+        <path d="M 1180 380 q 4 40 -4 80 q 0 30 4 60 l 4 0 q -2 -30 2 -60 q 4 -40 4 -80 z"/>
+      </g>
+
+      <!-- ROLLING HILL between peaks (light tundra slope) -->
+      <path d="M0 600 Q 300 580 600 600 Q 900 620 1400 600 L 1400 640 L 0 640 Z" fill="#aebda6"/>
+
+      <!-- LAKE / band (subtle) -->
+      <rect x="0" y="630" width="1400" height="22" fill="url(#water)" opacity=".6"/>
+
+      <!-- MID TUNDRA hill -->
+      <path d="M0 670 Q 200 650 460 680 Q 700 700 980 670 Q 1200 656 1400 680 L 1400 760 L 0 760 Z" fill="#a8b97c"/>
+
+      <!-- mossy lichen patches (white-ish) on tundra, like in the photo -->
+      <g fill="#e8ecd6" opacity=".75">
+        <ellipse cx="120" cy="700" rx="40" ry="6"/>
+        <ellipse cx="320" cy="710" rx="50" ry="6"/>
+        <ellipse cx="640" cy="720" rx="60" ry="7"/>
+        <ellipse cx="980" cy="710" rx="70" ry="7"/>
+        <ellipse cx="1240" cy="715" rx="50" ry="6"/>
+      </g>
+
+      <!-- FOREGROUND TUNDRA -->
+      <path d="M0 720 Q 300 710 700 740 Q 1100 770 1400 730 L 1400 900 L 0 900 Z" fill="#8aa05c"/>
+      <path d="M0 780 Q 300 770 700 800 Q 1100 820 1400 790 L 1400 900 L 0 900 Z" fill="#6c8444"/>
+
+      <!-- PATH winding -->
+      <path d="M-20 880 Q 200 830 480 840 Q 760 850 1020 820 Q 1240 800 1420 820 L 1420 900 L -20 900 Z" fill="url(#path)"/>
+      <path d="M-20 880 Q 200 830 480 840 Q 760 850 1020 820 Q 1240 800 1420 820"
+            fill="none" stroke="#9c8d6f" stroke-width="3" stroke-dasharray="2 9" opacity=".6"/>
+
+      <!-- foreground heather/grass tufts -->
+      <g stroke="#3c5520" stroke-width="2.4" stroke-linecap="round" fill="none">
+        <path d="M40 770 l-2 -16 m4 16 l-2 -22 m6 22 l4 -18"/>
+        <path d="M160 790 l-2 -14 m4 14 l-2 -20 m6 20 l4 -16"/>
+        <path d="M310 760 l-2 -16 m4 16 l-2 -22 m6 22 l4 -18"/>
+        <path d="M1290 790 l-2 -16 m4 16 l-2 -22 m6 22 l4 -18"/>
+        <path d="M1160 770 l-2 -14 m4 14 l-2 -20 m6 20 l4 -16"/>
+        <path d="M740 770 l-2 -12 m4 12 l-2 -18 m6 18 l4 -14"/>
+      </g>
+
+      <!-- small wildflowers -->
+      <g>
+        <g transform="translate(80 800)"><circle r="3.5" fill="#e8c54a"/><circle r="1.4" fill="#3c2c0f"/></g>
+        <g transform="translate(380 790)"><circle r="3.5" fill="#d54a3a"/><circle r="1.4" fill="#fff"/></g>
+        <g transform="translate(1230 805)"><circle r="3.5" fill="#e8c54a"/><circle r="1.4" fill="#3c2c0f"/></g>
+        <g transform="translate(1100 795)"><circle r="3.5" fill="#d54a3a"/><circle r="1.4" fill="#fff"/></g>
+        <g transform="translate(220 815)"><circle r="3.5" fill="#fff"/><circle r="1.4" fill="#e8c54a"/></g>
+      </g>
+
+      <!-- tiny trail marker (Norwegian red T on a stone) -->
+      <g transform="translate(450 815)">
+        <ellipse cx="0" cy="6" rx="14" ry="5" fill="#1d2733" opacity=".15"/>
+        <path d="M-12 4 q 0 -14 12 -14 q 12 0 12 14 z" fill="#a8a8a8" stroke="#1d2733" stroke-width="2"/>
+        <!-- red T -->
+        <path d="M-5 -6 l 10 0 l 0 3 l -3.5 0 l 0 8 l -3 0 l 0 -8 l -3.5 0 z" fill="#d54a3a"/>
+      </g>
+
+      <!-- distant tiny pine trees on far hill -->
+      <g fill="#4c6230">
+        <polygon points="60,640 66,615 72,640"/>
+        <polygon points="90,635 96,608 102,635"/>
+        <polygon points="120,640 126,618 132,640"/>
+        <polygon points="1330,642 1336,618 1342,642"/>
+      </g>
+
+      <!-- ============================ 7 CARTOON HIKERS ============================ -->
+      <!-- positions: 180, 340, 500, 660, 820, 980, 1140 -->
+
+      <!-- HIKER 1: Black cap + black tee, hands on hips -->
+      <g transform="translate(180 770) scale(.96)">
+        <!-- legs -->
+        <path d="M-10 50 q -2 30 -6 60" stroke="#3a3245" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 50 q 4 28 12 58" stroke="#3a3245" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-18" cy="112" rx="12" ry="6" fill="#1d2733"/>
+        <ellipse cx="22" cy="110" rx="12" ry="6" fill="#1d2733"/>
+        <!-- backpack -->
+        <rect x="-22" y="-6" width="44" height="48" rx="10" fill="#3f6a8a" stroke="#1d2733" stroke-width="3"/>
+        <rect x="-12" y="6" width="24" height="14" rx="3" fill="#2c4f6a" stroke="#1d2733" stroke-width="2"/>
+        <!-- body (black tee) -->
+        <path d="M-26 2 Q -30 40 -16 50 L 16 50 Q 30 40 26 2 Z" fill="#1d2733" stroke="#1d2733" stroke-width="3"/>
+        <!-- arms hands on hips -->
+        <path d="M-24 8 q -12 14 -2 26" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M24 8 q 12 14 2 26" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- head -->
+        <circle cx="0" cy="-22" r="20" fill="#f0d2b3" stroke="#1d2733" stroke-width="3"/>
+        <!-- cap -->
+        <path d="M-20 -28 q 4 -18 20 -18 q 16 0 20 18 L 20 -22 L -20 -22 Z" fill="#1d2733" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-20 -22 L 22 -22 L 30 -16 L -16 -16 Z" fill="#1d2733" stroke="#1d2733" stroke-width="3"/>
+        <!-- eyes -->
+        <circle cx="-7" cy="-18" r="1.8" fill="#1d2733"/>
+        <circle cx="7" cy="-18" r="1.8" fill="#1d2733"/>
+        <!-- light stubble -->
+        <g fill="#5d4a3a" opacity=".5">
+          <circle cx="-8" cy="-6" r="1"/><circle cx="-4" cy="-4" r="1"/><circle cx="0" cy="-3" r="1"/>
+          <circle cx="4" cy="-4" r="1"/><circle cx="8" cy="-6" r="1"/>
+        </g>
+        <path d="M-4 -8 q 4 3 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- HIKER 2: Grey cap, white tee with chest logo, beard -->
+      <g transform="translate(340 775) scale(1)">
+        <path d="M-10 50 q -2 30 -6 60" stroke="#7a6a4a" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 50 q 4 28 12 58" stroke="#7a6a4a" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-18" cy="112" rx="12" ry="6" fill="#3a3245"/>
+        <ellipse cx="22" cy="110" rx="12" ry="6" fill="#3a3245"/>
+        <!-- backpack -->
+        <rect x="-22" y="-6" width="44" height="48" rx="10" fill="#5f7a3a" stroke="#1d2733" stroke-width="3"/>
+        <rect x="-12" y="6" width="24" height="14" rx="3" fill="#3f5a28" stroke="#1d2733" stroke-width="2"/>
+        <!-- body (white tee) -->
+        <path d="M-26 2 Q -30 40 -16 50 L 16 50 Q 30 40 26 2 Z" fill="#f4f1ea" stroke="#1d2733" stroke-width="3"/>
+        <text x="0" y="22" text-anchor="middle" font-family="Archivo Black" font-size="9" fill="#1d2733">LA</text>
+        <!-- arms -->
+        <path d="M-26 6 q -8 22 -4 36" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M26 6 q 8 22 4 36" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- head -->
+        <circle cx="0" cy="-22" r="20" fill="#e8c5a0" stroke="#1d2733" stroke-width="3"/>
+        <!-- grey cap -->
+        <path d="M-20 -28 q 4 -18 20 -18 q 16 0 20 18 L 20 -22 L -20 -22 Z" fill="#8a8278" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-20 -22 L 22 -22 L 30 -16 L -16 -16 Z" fill="#8a8278" stroke="#1d2733" stroke-width="3"/>
+        <circle cx="-7" cy="-18" r="1.8" fill="#1d2733"/>
+        <circle cx="7" cy="-18" r="1.8" fill="#1d2733"/>
+        <!-- beard -->
+        <path d="M-14 -4 q 0 14 14 16 q 14 -2 14 -16 q -6 4 -14 4 q -8 0 -14 -4 Z" fill="#5d4a3a" stroke="#1d2733" stroke-width="2.5"/>
+        <path d="M-4 -2 q 4 4 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- HIKER 3: Olive tee, beard — STANDING now (was kneeling) -->
+      <g transform="translate(500 770) scale(.98)">
+        <path d="M-10 50 q -2 30 -6 60" stroke="#2c2435" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 50 q 4 28 12 58" stroke="#2c2435" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-18" cy="112" rx="12" ry="6" fill="#1d2733"/>
+        <ellipse cx="22" cy="110" rx="12" ry="6" fill="#1d2733"/>
+        <!-- trekking pole -->
+        <line x1="-34" y1="-8" x2="-44" y2="120" stroke="#5d2a24" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="-44" cy="120" r="3" fill="#1d2733"/>
+        <!-- backpack -->
+        <rect x="-22" y="-6" width="44" height="48" rx="10" fill="#a35c4a" stroke="#1d2733" stroke-width="3"/>
+        <!-- body olive tee -->
+        <path d="M-26 2 Q -30 40 -16 50 L 16 50 Q 30 40 26 2 Z" fill="#4d5a2a" stroke="#1d2733" stroke-width="3"/>
+        <!-- arms -->
+        <path d="M-26 6 q -10 16 -10 30" stroke="#e8c5a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M26 6 q 10 16 10 30" stroke="#e8c5a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- head -->
+        <circle cx="0" cy="-22" r="20" fill="#e8c5a0" stroke="#1d2733" stroke-width="3"/>
+        <!-- short brown hair -->
+        <path d="M-20 -32 q 4 -14 20 -14 q 16 0 20 14 q -8 -6 -20 -6 q -12 0 -20 6 Z" fill="#4a3522" stroke="#1d2733" stroke-width="3"/>
+        <circle cx="-7" cy="-22" r="1.8" fill="#1d2733"/>
+        <circle cx="7" cy="-22" r="1.8" fill="#1d2733"/>
+        <!-- beard -->
+        <path d="M-14 -8 q 0 14 14 16 q 14 -2 14 -16 q -6 4 -14 4 q -8 0 -14 -4 Z" fill="#4a3522" stroke="#1d2733" stroke-width="2.5"/>
+        <path d="M-4 -4 q 4 4 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- HIKER 4 (CENTER): Older guy, glasses, grey hair & beard -->
+      <g transform="translate(660 760) scale(1.08)">
+        <path d="M-10 50 q -2 30 -6 60" stroke="#3f3a52" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 50 q 4 28 12 58" stroke="#3f3a52" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-18" cy="112" rx="12" ry="6" fill="#5d4a3a"/>
+        <ellipse cx="22" cy="110" rx="12" ry="6" fill="#5d4a3a"/>
+        <!-- trekking pole right -->
+        <line x1="34" y1="-10" x2="44" y2="120" stroke="#5d2a24" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="44" cy="120" r="3" fill="#1d2733"/>
+        <!-- backpack with bedroll -->
+        <rect x="-24" y="-8" width="48" height="52" rx="10" fill="#c46a2e" stroke="#1d2733" stroke-width="3"/>
+        <rect x="-22" y="-18" width="44" height="12" rx="6" fill="#e0c84a" stroke="#1d2733" stroke-width="3"/>
+        <!-- body fleece -->
+        <path d="M-28 4 Q -32 42 -16 52 L 16 52 Q 32 42 28 4 Z" fill="#6a7e96" stroke="#1d2733" stroke-width="3"/>
+        <line x1="0" y1="6" x2="0" y2="48" stroke="#1d2733" stroke-width="2"/>
+        <!-- arms -->
+        <path d="M-28 8 q -12 16 -8 30" stroke="#6a7e96" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M28 8 q 12 16 8 30" stroke="#6a7e96" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <circle cx="-36" cy="38" r="6" fill="#e8c5a0" stroke="#1d2733" stroke-width="2.5"/>
+        <circle cx="36" cy="38" r="6" fill="#e8c5a0" stroke="#1d2733" stroke-width="2.5"/>
+        <!-- head -->
+        <circle cx="0" cy="-24" r="22" fill="#e8c5a0" stroke="#1d2733" stroke-width="3"/>
+        <!-- grey hair (receded) -->
+        <path d="M-22 -32 q 4 -12 22 -12 q 18 0 22 12 q -6 -4 -12 -4 q -2 8 -10 8 q -8 0 -10 -8 q -6 0 -12 4 Z" fill="#cfcad0" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-22 -22 q -4 8 0 16" fill="none" stroke="#cfcad0" stroke-width="5" stroke-linecap="round"/>
+        <path d="M22 -22 q 4 8 0 16" fill="none" stroke="#cfcad0" stroke-width="5" stroke-linecap="round"/>
+        <!-- glasses -->
+        <g stroke="#1d2733" stroke-width="2.5" fill="none">
+          <circle cx="-8" cy="-22" r="7"/>
+          <circle cx="8" cy="-22" r="7"/>
+          <line x1="-1" y1="-22" x2="1" y2="-22"/>
+          <line x1="-15" y1="-22" x2="-19" y2="-21"/>
+          <line x1="15" y1="-22" x2="19" y2="-21"/>
+        </g>
+        <circle cx="-8" cy="-22" r="1.7" fill="#1d2733"/>
+        <circle cx="8" cy="-22" r="1.7" fill="#1d2733"/>
+        <!-- grey beard -->
+        <path d="M-12 -10 q 2 4 6 4 q 4 -2 6 -4 q 2 2 6 4 q 4 0 6 -4" fill="none" stroke="#cfcad0" stroke-width="5" stroke-linecap="round"/>
+        <path d="M-14 -6 q 0 14 14 18 q 14 -4 14 -18 q -6 4 -14 4 q -8 0 -14 -4 Z" fill="#cfcad0" stroke="#1d2733" stroke-width="2.5"/>
+        <path d="M-4 -2 q 4 4 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M-16 -30 q 4 -2 8 0" stroke="#1d2733" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".55"/>
+        <path d="M8 -30 q 4 -2 8 0" stroke="#1d2733" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".55"/>
+      </g>
+
+      <!-- HIKER 5: NEW 7th — placeholder. Brown beanie, red flannel, brown beard -->
+      <g transform="translate(820 770) scale(.98)">
+        <path d="M-10 50 q -2 30 -6 60" stroke="#3a2a20" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 50 q 4 28 12 58" stroke="#3a2a20" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-18" cy="112" rx="12" ry="6" fill="#1d2733"/>
+        <ellipse cx="22" cy="110" rx="12" ry="6" fill="#1d2733"/>
+        <!-- backpack -->
+        <rect x="-22" y="-6" width="44" height="48" rx="10" fill="#3f5a28" stroke="#1d2733" stroke-width="3"/>
+        <!-- body red flannel -->
+        <path d="M-26 2 Q -30 40 -16 50 L 16 50 Q 30 40 26 2 Z" fill="#b8412e" stroke="#1d2733" stroke-width="3"/>
+        <!-- plaid lines -->
+        <g stroke="#7a2818" stroke-width="2" opacity=".7">
+          <line x1="-20" y1="10" x2="22" y2="10"/>
+          <line x1="-22" y1="22" x2="24" y2="22"/>
+          <line x1="-22" y1="34" x2="24" y2="34"/>
+          <line x1="-8" y1="4" x2="-8" y2="48"/>
+          <line x1="8" y1="4" x2="8" y2="48"/>
+        </g>
+        <!-- arms -->
+        <path d="M-26 6 q -10 16 -8 30" stroke="#b8412e" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M26 6 q 10 16 8 30" stroke="#b8412e" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <!-- head -->
+        <circle cx="0" cy="-22" r="20" fill="#e8c5a0" stroke="#1d2733" stroke-width="3"/>
+        <!-- beanie -->
+        <path d="M-20 -22 q -2 -22 20 -22 q 22 0 20 22 Z" fill="#6b4a2a" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-20 -22 L 22 -22" stroke="#1d2733" stroke-width="3"/>
+        <!-- pompom -->
+        <circle cx="0" cy="-46" r="5" fill="#e0c84a" stroke="#1d2733" stroke-width="2"/>
+        <circle cx="-7" cy="-18" r="1.8" fill="#1d2733"/>
+        <circle cx="7" cy="-18" r="1.8" fill="#1d2733"/>
+        <!-- short beard -->
+        <path d="M-12 -6 q 0 12 12 14 q 12 -2 12 -14 q -4 2 -12 2 q -8 0 -12 -2 Z" fill="#5a3a20" stroke="#1d2733" stroke-width="2.5"/>
+        <path d="M-4 -4 q 4 4 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- HIKER 6: "Kickin' Gas in the Ass" guy — bearded, grey tee, beige shorts -->
+      <g transform="translate(980 760) scale(1.04)">
+        <path d="M-10 38 q -2 14 -4 22" stroke="#c9a973" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 38 q 2 14 4 22" stroke="#c9a973" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M-12 60 q -4 28 -8 56" stroke="#f0d2b3" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <path d="M12 60 q 4 28 8 56" stroke="#f0d2b3" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-22" cy="118" rx="12" ry="6" fill="#1d2733"/>
+        <ellipse cx="22" cy="116" rx="12" ry="6" fill="#1d2733"/>
+        <line x1="-38" y1="-6" x2="-50" y2="120" stroke="#5d2a24" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M-28 0 Q -32 38 -16 48 L 16 48 Q 32 38 28 0 Z" fill="#8a8a90" stroke="#1d2733" stroke-width="3"/>
+        <rect x="-24" y="-6" width="48" height="20" rx="6" fill="#d54a3a" stroke="#1d2733" stroke-width="3"/>
+        <!-- T-shirt slogan (3 lines, readable) -->
+        <text x="0" y="20" text-anchor="middle" font-family="Archivo Black" font-size="6.5" fill="#1d2733">KICKIN'</text>
+        <text x="0" y="28" text-anchor="middle" font-family="Archivo Black" font-size="6.5" fill="#1d2733">GAS IN</text>
+        <text x="0" y="36" text-anchor="middle" font-family="Archivo Black" font-size="6.5" fill="#1d2733">THE ASS</text>
+        <path d="M-28 4 q -12 14 -10 28" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M28 4 q 12 14 10 28" stroke="#f0d2b3" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <circle cx="0" cy="-22" r="22" fill="#eab891" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-22 -30 q 6 -16 22 -16 q 16 0 22 16 q -10 -6 -22 -4 q -12 -2 -22 4 Z" fill="#3a2a20" stroke="#1d2733" stroke-width="3"/>
+        <circle cx="-8" cy="-22" r="1.9" fill="#1d2733"/>
+        <circle cx="8" cy="-22" r="1.9" fill="#1d2733"/>
+        <!-- big beard -->
+        <path d="M-18 -10 q 2 22 18 22 q 16 0 18 -22 q -8 6 -18 6 q -10 0 -18 -6 Z" fill="#3a2a20" stroke="#1d2733" stroke-width="2.5"/>
+        <path d="M-4 -2 q 4 3 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- HIKER 7: Blonde, blue sunglasses, tan hoodie, green shorts -->
+      <g transform="translate(1140 770) scale(.98)">
+        <path d="M-10 38 q -2 14 -4 22" stroke="#3f5a28" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M10 38 q 2 14 4 22" stroke="#3f5a28" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M-12 60 q -4 28 -8 56" stroke="#f0d2b3" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <path d="M12 60 q 4 28 8 56" stroke="#f0d2b3" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <ellipse cx="-22" cy="118" rx="12" ry="6" fill="#5d2a24"/>
+        <ellipse cx="22" cy="116" rx="12" ry="6" fill="#5d2a24"/>
+        <path d="M-26 2 Q -30 40 -16 50 L 16 50 Q 30 40 26 2 Z" fill="#c9a07a" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-22 0 q 4 -14 22 -14 q 18 0 22 14 q -10 -4 -22 -4 q -12 0 -22 4 Z" fill="#a87f5a" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-14 22 q 14 12 28 0 l 0 8 l -28 0 z" fill="#a87f5a" stroke="#1d2733" stroke-width="2.5"/>
+        <rect x="-24" y="-2" width="48" height="14" rx="6" fill="#2c2435" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-22 14 q -8 12 0 22" stroke="#c9a07a" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M22 14 q 8 12 0 22" stroke="#c9a07a" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <circle cx="0" cy="-22" r="20" fill="#f0d2b3" stroke="#1d2733" stroke-width="3"/>
+        <path d="M-20 -28 q 4 -16 20 -16 q 16 0 20 16 q -4 -6 -10 -4 q -6 -4 -12 0 q -10 -2 -18 4 Z" fill="#e6c772" stroke="#1d2733" stroke-width="3"/>
+        <g stroke="#1d2733" stroke-width="2.5">
+          <rect x="-14" y="-22" width="11" height="7" rx="2" fill="#3f6a8a"/>
+          <rect x="3" y="-22" width="11" height="7" rx="2" fill="#3f6a8a"/>
+          <line x1="-3" y1="-19" x2="3" y2="-19"/>
+        </g>
+        <path d="M-4 -8 q 4 4 8 0" stroke="#1d2733" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- shadows under hikers -->
+      <g fill="#1d2733" opacity=".18">
+        <ellipse cx="180" cy="878" rx="40" ry="6"/>
+        <ellipse cx="340" cy="884" rx="40" ry="6"/>
+        <ellipse cx="500" cy="884" rx="40" ry="6"/>
+        <ellipse cx="660" cy="880" rx="50" ry="7"/>
+        <ellipse cx="820" cy="884" rx="40" ry="6"/>
+        <ellipse cx="980" cy="884" rx="48" ry="6.5"/>
+        <ellipse cx="1140" cy="884" rx="44" ry="6.5"/>
+      </g>
+
+      <!-- little waving 2026 flag above center -->
+      <g transform="translate(660 605)">
+        <line x1="0" y1="0" x2="0" y2="60" stroke="#1d2733" stroke-width="3"/>
+        <path d="M0 0 L 70 6 L 64 22 L 70 38 L 0 32 Z" fill="#d54a3a" stroke="#1d2733" stroke-width="3"/>
+        <text x="34" y="22" text-anchor="middle" font-family="Archivo Black" font-size="11" fill="#fff" letter-spacing="1">2026</text>
+      </g>
+    </svg>
+
+    <div class="grain"></div>
+
+    <div class="overlay">
+      <div class="top">
+        <div class="badge"><span class="dot"></span>Rondane · Dovre Expedisjon</div>
+        <div class="meta">
+          <b>01.07.2026</b>
+          Rondeslottet · 2 178 m<br/>
+          Sekkene pakkes · 7 mann sterk
+        </div>
+      </div>
+
+      <div class="center">
+        <div class="label">Dager til avgang</div>
+        <div class="num"><span id="dayCount">44</span></div>
+        <div class="sub">DAYS TO GO</div>
+      </div>
+
+      <div class="bottom">
+        <div class="names">
+          <b>The Crew · 7 mann sterk</b>
+          Andreas · Kjetil · Geir · Sondre · HC · Knut · Ole Martin
+        </div>
+        <div class="stamp">til topps!</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  (function(){
+    const el = document.getElementById('dayCount');
+    if(!el) return;
+    function update(){
+      const target = new Date('2026-07-01T08:00:00');
+      const now = new Date();
+      const diff = target - now;
+      const days = Math.max(0, Math.ceil(diff / (1000*60*60*24)));
+      el.textContent = days;
+    }
+    update();
+    setInterval(update, 60*60*1000);
+  })();
+</script>
+</body>
+</html>
