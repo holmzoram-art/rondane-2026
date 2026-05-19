@@ -535,7 +535,7 @@
 
       <div class="center">
         <div class="label">Dager til avgang</div>
-        <div class="num"><span id="dayCount">44</span></div>
+        <div class="num"><span id="dayCount">43</span></div>
         <div class="sub">DAYS TO GO</div>
       </div>
 
@@ -553,11 +553,14 @@
   (function(){
     const el = document.getElementById('dayCount');
     if(!el) return;
+    // Count whole calendar days in Norway (Europe/Oslo) time, regardless of where the viewer is.
     function update(){
-      const target = new Date('2026-07-01T08:00:00');
-      const now = new Date();
-      const diff = target - now;
-      const days = Math.max(0, Math.ceil(diff / (1000*60*60*24)));
+      const MS_PER_DAY = 86400000;
+      // Get today's date string in Oslo and parse as UTC midnight
+      const osloToday = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Oslo' }); // YYYY-MM-DD
+      const today = new Date(osloToday + 'T00:00:00Z');
+      const target = new Date('2026-07-01T00:00:00Z');
+      const days = Math.max(0, Math.round((target - today) / MS_PER_DAY));
       el.textContent = days;
     }
     update();
